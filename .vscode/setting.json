@@ -1,0 +1,17 @@
+{
+  "eslint.packageManager": "yarn", 
+  "eslint.workingDirectories": ["./api"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.codeActionsOnSave": [
+    "source.organizeImports",
+    "source.fixAll.eslint"
+  ],
+  "search.exclude": {
+    ".git": true,
+    "node_modules": true,
+    "yarn.lock": true
+  }
+}
