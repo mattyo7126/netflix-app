@@ -1,4 +1,3 @@
-import React from 'react';
 import { Row } from './components/Row';
 import { requests } from './request';
 

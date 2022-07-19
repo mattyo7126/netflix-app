@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import axios from '../axios';
 
 type Props = {
@@ -30,5 +30,5 @@ export const Row = ({ title, fetchUrl }: Props) => {
 
   console.log(movies);
 
-  return <div className="Row" />;
+  return <div className="Row">{title}</div>;
 };
