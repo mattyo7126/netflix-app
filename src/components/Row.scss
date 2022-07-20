@@ -1,6 +1,6 @@
 .Row {
   margin-left: 20px;
-  color: #fff;
+  // color: #fff;
 
   &-posters {
     display: flex;
@@ -8,9 +8,9 @@
     overflow-x: scroll;
     padding: 20px;
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    // &::-webkit-scrollbar {
+    //   display: none;
+    // }
   }
 
   &-poster {
