@@ -32,4 +32,20 @@
       transform: scale(1.08);
     }
   }
+
+  &-movie-name-box {
+    height: 80px;
+    background-color: lightgray;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  &-movie-name {
+    width: 158px;
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+  }
 }
