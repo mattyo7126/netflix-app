@@ -2,7 +2,7 @@ import { Nav } from './components/Nav';
 import { Banner } from './components/Banner';
 import { Row } from './components/Row';
 import { requests } from './request';
-
+import './App.css';
 function App() {
   return (
     <div className="App">
