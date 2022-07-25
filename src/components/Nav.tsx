@@ -4,7 +4,7 @@ type Props = {
   className?: string;
 };
 
-export const Nav = (props: Props) => {
+export const Nav: React.FC<Props> = (props) => {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const handleShow = () => {

@@ -11,7 +11,7 @@ type movieProps = {
   overview?: string;
 };
 
-export const Banner = () => {
+export const Banner: React.FC = () => {
   const [movie, setMovie] = useState<movieProps>({});
   useEffect(() => {
     async function fetchData() {
