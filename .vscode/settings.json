@@ -1,6 +1,6 @@
 {
-  "eslint.packageManager": "yarn", 
-  "eslint.workingDirectories": ["./api"],
+  "eslint.packageManager": "yarn",
+  "eslint.workingDirectories": ["."],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,

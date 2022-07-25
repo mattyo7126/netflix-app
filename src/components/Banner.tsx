@@ -31,11 +31,12 @@ export const Banner = () => {
   console.log(movie);
 
   // descriptionの切り捨てよう関数
-  function truncate(str: any, n: number) {
+  function truncate(str: string | undefined, n: number) {
     // undefinedを弾く
-    if (str !== undefined) {
-      return str.length > n ? str?.substr(0, n - 1) + '...' : str;
+    if (typeof str !== 'string') {
+      return '';
     }
+    return str.length > n ? str.substring(0, n - 1) + '...' : str;
   }
 
   return (
