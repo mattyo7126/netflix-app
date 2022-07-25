@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import YouTube from 'react-youtube';
 import axios from '../axios';
 import { getVideos } from '../features/movie/getVideos';
@@ -45,11 +46,21 @@ export const Row: React.FC<Props> = ({ title, fetchUrl, isLargeRow }) => {
   };
 
   const handleClick = async (movie: Movie) => {
+    setTrailerUrl('');
     try {
       const { results } = await getVideos(movie);
-      setTrailerUrl(results.length >= 1 ? results[0].key : '');
+      if (results.length >= 1 && results[0].key) {
+        setTrailerUrl(results[0].key);
+        return;
+      }
+      toast(`"${movie.name}"'s video dose not exist.`, {
+        type: toast.TYPE.ERROR,
+      });
     } catch (error) {
-      setTrailerUrl('');
+      const message = typeof error === 'string' ? error : 'Unknown error.';
+      toast(`Failed to get "${movie.name}"'s video. ${message}`, {
+        type: toast.TYPE.ERROR,
+      });
     }
   };
 
