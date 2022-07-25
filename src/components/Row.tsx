@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import axios from '../axios';
-import './Row.scss';
 import YouTube from 'react-youtube';
+import axios from '../axios';
+import { getVideos } from '../features/movie/getVideos';
+import { Movie } from '../features/movie/types';
+import './Row.scss';
 
 const base_url = 'https://image.tmdb.org/t/p/original';
 
@@ -9,15 +11,6 @@ type Props = {
   title: string;
   fetchUrl: string;
   isLargeRow?: boolean;
-};
-
-type Movie = {
-  id: string;
-  name: string;
-  title: string;
-  original_name: string;
-  poster_path: string;
-  backdrop_path: string;
 };
 
 //trailerのoption
@@ -29,7 +22,7 @@ type Options = {
   };
 };
 
-export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
+export const Row: React.FC<Props> = ({ title, fetchUrl, isLargeRow }) => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [trailerUrl, setTrailerUrl] = useState<string | null>('');
 
@@ -52,13 +45,11 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
   };
 
   const handleClick = async (movie: Movie) => {
-    if (trailerUrl) {
+    try {
+      const { results } = await getVideos(movie);
+      setTrailerUrl(results.length >= 1 ? results[0].key : '');
+    } catch (error) {
       setTrailerUrl('');
-    } else {
-      const trailerUrl = await axios.get(
-        `/movie/${movie.id}/videos?api_key=~~~`,
-      );
-      setTrailerUrl(trailerUrl.data.results[0]?.key);
     }
   };
 
@@ -67,9 +58,9 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
       <h2>{title}</h2>
       <div className="Row-posters">
         {/* ポスターコンテンツ */}
-        {movies.map((movie) => {
+        {movies.map((movie, index) => {
           return !isLargeRow && !movie.backdrop_path ? (
-            <div className="Row-movie-name-box">
+            <div key={index} className="Row-movie-name-box">
               <div className="Row-movie-name">
                 <p>{movie.name}</p>
               </div>

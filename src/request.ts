@@ -9,4 +9,6 @@ export const requests = {
   feactHorrorMovies: `/discover/tv?api_key=${API_KEY}&with_genres=27`,
   feactRomanceMovies: `/discover/tv?api_key=${API_KEY}&with_genres=10749`,
   feactDocumentMovies: `/discover/tv?api_key=${API_KEY}&with_genres=99`,
+  feactVideos: (movieId: string): string =>
+    `/movie/${movieId}/videos?api_key=${API_KEY}`,
 };
