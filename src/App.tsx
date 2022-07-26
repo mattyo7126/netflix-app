@@ -1,9 +1,10 @@
-import { Nav } from './components/Nav';
+import './App.css';
 import { Banner } from './components/Banner';
+import { Nav } from './components/Nav';
 import { Row } from './components/Row';
 import { requests } from './request';
-import './App.css';
-function App() {
+
+const App: React.FC = () => {
   return (
     <div className="App">
       <Nav />
@@ -21,6 +22,6 @@ function App() {
       <Row title="DOcumentaries" fetchUrl={requests.feactDocumentMovies} />
     </div>
   );
-}
+};
 
 export default App;
