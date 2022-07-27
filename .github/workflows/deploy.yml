@@ -1,0 +1,49 @@
+name: Deploy to GitHub Pages
+
+# master ブランチ の push 時にこのワークフローを実行する
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+
+    steps:
+      # master ブランチを取得する
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      # Node.js のセットアップをする
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          # 必要であれば上原さんの環境のバージョンを指定してください
+          # node-version: 14
+          cache: 'yarn'
+
+      # パッケージをインストールする
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # .env ファイルを生成し環境変数を設定します。
+      # Github の該当プロジェクト上で
+      # Settings > Secrets > Actions
+      # より TMDB_API_KEY の名前で TMDB の API キーを設定してください。
+      - name: Set env file
+        run: |
+          touch .env
+          echo "REACT_APP_TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" >> .env
+
+      # ビルドする
+      - name: Build
+        run: yarn build
+
+      # GitHub Pages にデプロイする
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          # PERSONAL_ACCESS_TOKEN を使わないと上がらないかも？
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: build
