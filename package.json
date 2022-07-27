@@ -11,12 +11,11 @@
     "react-toastify": "^9.0.7",
     "react-youtube": "^9.0.3",
     "sass": "^1.53.0",
-    "typescript": "^4.7.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "dotenv -e .env.local react-scripts start",
+    "build": "dotenv -e .env react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.{js,ts}\"",
@@ -43,10 +42,15 @@
     "@types/node": "^16.11.38",
     "@types/react": "^18.0.12",
     "@types/react-dom": "^18.0.5",
+    "@typescript-eslint/eslint-plugin": "^5.31.0",
+    "@typescript-eslint/parser": "^5.31.0",
+    "dotenv-cli": "^6.0.0",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.7.1"
+    "eslint-plugin-react": "^7.30.1",
+    "prettier": "^2.7.1",
+    "typescript": "~4.5.0"
   },
   "engines": {
     "node": ">=14.x",

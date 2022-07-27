@@ -1,4 +1,9 @@
-const API_KEY = 'beb6f1734d1436f1c10441f8d7b5e5a5';
+console.log(
+  'process.env.REACT_APP_TMDB_API_KEY:',
+  process.env.REACT_APP_TMDB_API_KEY,
+);
+
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 export const requests = {
   feachTrending: `/trending/all/week?api_key=${API_KEY}&language=en-us`,

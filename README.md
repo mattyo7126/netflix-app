@@ -14,6 +14,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
+ローカル実行時は必ず
+
+```bash
+cp .env.sample .env.local
+```
+
+を実行し、作成された .env.local ファイルの REACT_APP_TMDB_API_KEY に TMDB の API キーを設定してください。
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
