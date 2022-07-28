@@ -55,5 +55,6 @@
   "engines": {
     "node": ">=14.x",
     "npm": "please_use_yarn_instead"
-  }
+  },
+  "homepage": "https://mattyo7126.github.io/netflix-app"
 }
