@@ -14,8 +14,6 @@ jobs:
       # master ブランチを取得する
       - name: Checkout
         uses: actions/checkout@v3
-        env:
-          CI: false
 
       # Node.js のセットアップをする
       - name: Setup Node
@@ -41,6 +39,8 @@ jobs:
       # ビルドする
       - name: Build
         run: yarn build
+        env:
+          CI: false
 
       # GitHub Pages にデプロイする
       - name: Deploy
