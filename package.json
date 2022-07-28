@@ -14,7 +14,6 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build",
     "start": "dotenv -e .env.local react-scripts start",
     "build": "dotenv -e .env react-scripts build",

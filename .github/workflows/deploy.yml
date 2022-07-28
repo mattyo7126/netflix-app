@@ -39,10 +39,12 @@ jobs:
       # ビルドする
       - name: Build & Deploy
         run: |
-          yarn predeploy
-          yarn deploy
+          yarn build
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          yarn deploy -- -u "github-actions-bot <support+actions@github.com>"
         env:
           CI: false
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # # GitHub Pages にデプロイする
       # - name: Deploy
