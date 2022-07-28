@@ -24,8 +24,8 @@ jobs:
           cache: 'yarn'
 
       # パッケージをインストールする
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
+      - name: Install
+        run: yarn install
 
       # .env ファイルを生成し環境変数を設定します。
       # Github の該当プロジェクト上で
@@ -37,11 +37,16 @@ jobs:
           echo "REACT_APP_TMDB_API_KEY=${{ secrets.TMDB_API_KEY }}" >> .env
 
       # ビルドする
-      - name: Build & Deploy
+      - name: Build
         run: |
           yarn build
+        env:
+          CI: false
+
+      - name: Deploy
+        run: |
           git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          yarn deploy -- -u "github-actions-bot <support+actions@github.com>"
+          yarn deploy -u "github-actions-bot <support+actions@github.com>"
         env:
           CI: false
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
