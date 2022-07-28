@@ -49,3 +49,4 @@ jobs:
           # PERSONAL_ACCESS_TOKEN を使わないと上がらないかも？
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
+          enable_jekyll: false
